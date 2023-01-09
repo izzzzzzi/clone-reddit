@@ -1,4 +1,4 @@
-import { IsEmail, Length, ValidationTypes } from "class-validator";
+import { IsEmail, Length } from "class-validator";
 import { BeforeInsert, Column, Entity, Index, OneToMany } from "typeorm";
 import bcrypt from "bcryptjs";
 
@@ -21,7 +21,7 @@ export class User {
     password!: string;
 
     // 한 명의 user가 여러 post 가능
-    @OneToMany(() => postMessage, (post) => post.user)
+    @OneToMany(() => Post, (post) => post.user)
     posts!: Post[]
 
     // 한 명의 user가 여러 vote 가능
